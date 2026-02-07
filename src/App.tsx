@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const [amount, setAmount] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
 
-  const addTransaction = (e: React.FormEvent, type: "Income" | "Expense") => {
+  const addTransaction = (e: React.MouseEvent, type: "Income" | "Expense") => {
     e.preventDefault();
     // validation logic
     if (description.trim() === "") {
