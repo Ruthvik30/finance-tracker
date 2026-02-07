@@ -1,0 +1,137 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.button-btn {
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  flex: 1;
+}
+.expense-button {
+  background-color: #9c3b97;
+}
+
+.income-button {
+  background-color: #388033;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+input {
+  padding: 0.75rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.5rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+input::placeholder {
+  color: #999;
+  font-weight: 500;
+}
+
+input:focus {
+  outline: none;
+  border-color: #b3e5fc;
+  background-color: #f0f8ff;
+  border-color: #72c6f3;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.transactions-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.transaction-item {
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-left: 4px solid;
+  background-color: #f8f8f8;
+}
+
+.transaction-item.income {
+  color: #2d5a2d;
+  border-left-color: #388033;
+  background-color: #e8f5e9;
+}
+
+.transaction-item.income:hover {
+  background-color: #c8e6c9;
+  box-shadow: 0 2px 8px rgba(56, 128, 51, 0.15);
+}
+
+.transaction-item.expense {
+  color: #6b1b47;
+  border-left-color: #9c3b97;
+  background-color: #f3e5f5;
+}
+
+.transaction-item.expense:hover {
+  background-color: #e1bee7;
+  box-shadow: 0 2px 8px rgba(156, 59, 151, 0.15);
+}
+
