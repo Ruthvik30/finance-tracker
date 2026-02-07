@@ -54,7 +54,7 @@ const App: React.FC = () => {
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
       <h1>
-        <Wallet /> Finance Tracker
+        <Wallet size={45} /> Finance Tracker
       </h1>
       <Summary
         income={totalIncome}
