@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import type { Transaction } from "./types";
 import { PlusCircle, Wallet } from "lucide-react";
 import "./App.css";
+import { Summary } from "./components/summary";
+import { TransactionList } from "./components/TransactionList";
 
 const App: React.FC = () => {
   const [transaction, setTransaction] = useState<Transaction[]>(() => {
@@ -16,6 +18,15 @@ const App: React.FC = () => {
 
   const addTransaction = (e: React.FormEvent, type: "Income" | "Expense") => {
     e.preventDefault();
+    // validation logic
+    if (description.trim() === "") {
+      alert("Please enter a description for the transaction.");
+      return;
+    }
+    if (amount <= 0) {
+      alert("Please enter a valid amount greater than zero.");
+      return;
+    }
     const newTransaction: Transaction = {
       id: crypto.randomUUID(),
       description: description,
@@ -33,20 +44,23 @@ const App: React.FC = () => {
     .reduce((acc, curr) => acc + curr.amount, 0);
   const totalExpense = transaction
     .filter((t) => t.category === "Expense")
-    .reduce((acc, curr) => acc + Math.abs(curr.amount), 0);
+    .reduce((acc, curr) => acc + curr.amount, 0);
+
+  const deleteTransaction = (id: string) => {
+    const updatedTransactions = transaction.filter((t) => t.id !== id);
+    setTransaction(updatedTransactions);
+  };
 
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
       <h1>
         <Wallet /> Finance Tracker
       </h1>
-      <div className="balance-card">
-        <h2>Current Balance: ₹{totalBalance.toFixed(2)}</h2>
-      </div>
-      <div className="balance-card">
-        <h5 children={`Total Income: ₹${totalIncome.toFixed(2)}`} />
-        <h5 children={`Total Expenditure: ₹${totalExpense.toFixed(2)}`} />
-      </div>
+      <Summary
+        income={totalIncome}
+        balance={totalBalance}
+        expenses={totalExpense}
+      />
       <form onSubmit={(e) => e.preventDefault()}>
         <div
           style={{
@@ -96,16 +110,10 @@ const App: React.FC = () => {
           </button>
         </div>
       </form>
-      <ul className="transactions-list">
-        {transaction.map((t) => (
-          <li
-            key={t.id}
-            className={`transaction-item ${t.category === "Income" ? "income" : "expense"}`}
-          >
-            {t.description}: ₹{Math.abs(t.amount).toFixed(2)} ({t.date})
-          </li>
-        ))}
-      </ul>
+      <TransactionList
+        transactions={transaction}
+        onDelete={deleteTransaction}
+      />
     </div>
   );
 };

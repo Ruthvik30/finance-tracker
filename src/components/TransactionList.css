@@ -1,0 +1,62 @@
+.btn-trash {
+  background-color: transparent;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  padding: 0.25em;
+}
+
+.btn-trash:hover {
+  background-color: #f8d7da;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+}
+
+.transactions-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.transaction-item {
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-left: 4px solid;
+  background-color: #f8f8f8;
+}
+
+.transaction-item.income {
+  color: #2d5a2d;
+  border-left-color: #388033;
+  background-color: #e8f5e9;
+}
+
+.transaction-item.income:hover {
+  background-color: #c8e6c9;
+  box-shadow: 0 2px 8px rgba(56, 128, 51, 0.15);
+}
+
+.transaction-item.expense {
+  color: #6b1b47;
+  border-left-color: #9c3b97;
+  background-color: #f3e5f5;
+}
+
+.transaction-item.expense:hover {
+  background-color: #e1bee7;
+  box-shadow: 0 2px 8px rgba(156, 59, 151, 0.15);
+}
+
+.transaction-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  font-size: 1.1rem;
+}
