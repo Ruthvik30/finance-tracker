@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import type { Transaction } from "./types";
 import { PlusCircle, Wallet } from "lucide-react";
 import "./App.css";
-import { Summary } from "./components/summary";
+import { Summary } from "./components/Summary";
 import { TransactionList } from "./components/TransactionList";
 
 const App: React.FC = () => {
